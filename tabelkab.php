@@ -155,10 +155,10 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Tabel Data Jenis Faskes</h1>
+            <h1>Tabel Data Kabupaten</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="#">Kelola Data</a></div>
-              <div class="breadcrumb-item">Data Jenis Faskes</div>
+              <div class="breadcrumb-item">Data Kabupaten</div>
             </div>
           </div>
 
@@ -167,7 +167,7 @@
             <div class="col-12 col-md-12 col-lg-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Data Jenis Fasilitas Kesehatan</h4>
+                    <h4>Data Kabupaten</h4>
                     <div class="card-header-form">
                       <form>
                         <div class="input-group">
@@ -186,7 +186,7 @@
                       <table class="table table-striped table-md">
                         <tr>
                           <th>No</th>
-                          <th>Nama Jenis Faskes</th>
+                          <th>Nama Kabupaten</th>
                           <th>Aksi</th>
                         </tr>
                         <?php 

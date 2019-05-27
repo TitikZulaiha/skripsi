@@ -1,3 +1,12 @@
+<?php 
+  // mengaktifkan session
+  session_start();
+  
+  // cek apakah user telah login, jika belum login maka di alihkan ke halaman login
+  if($_SESSION['status'] !="login"){
+    header("location:login.php");
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -123,6 +132,7 @@
                 <ul class="dropdown-menu">
                   <li><a class="nav-link" href="tabelkel.php">Data Kelurahan</a></li>
                   <li><a class="nav-link" href="tabelkec.php">Data Kecamatan</a></li>
+                  <li><a class="nav-link" href="tabelkab.php">Data Kabupaten</a></li>
                   <li><a class="nav-link" href="tabeljenis.php">Data Jenis Faskes</a></li>
                   <li><a class="nav-link" href="tabelfaskes.php">Data Faskes</a></li>
                 </ul>
@@ -149,7 +159,7 @@
             <h1>Peta Aksesibilitas</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="#">Akes Peta</a></div>
-              <div class="breadcrumb-item"><a href="#">Bidan</a></div>
+              <div class="breadcrumb-item"><a href="">Bidan</a></div>
             </div>
           </div>
 

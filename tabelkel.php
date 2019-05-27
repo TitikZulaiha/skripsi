@@ -1,3 +1,12 @@
+<?php 
+  // mengaktifkan session
+  session_start();
+  
+  // cek apakah user telah login, jika belum login maka di alihkan ke halaman login
+  if($_SESSION['status'] !="login"){
+    header("location:login.php");
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -109,7 +118,7 @@
                 <i class="fas fa-cog"></i> Settings
               </a>
               <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item has-icon text-danger">
+              <a href="logout.php" class="dropdown-item has-icon text-danger">
                 <i class="fas fa-sign-out-alt"></i> Logout
               </a>
             </div>
@@ -132,6 +141,7 @@
                 <ul class="dropdown-menu">
                   <li><a class="nav-link" href="tabelkel.php">Data Kelurahan</a></li>
                   <li><a class="nav-link" href="tabelkec.php">Data Kecamatan</a></li>
+                  <li><a class="nav-link" href="tabelkab.php">Data Kabupaten</a></li>
                   <li><a class="nav-link" href="tabeljenis.php">Data Jenis Faskes</a></li>
                   <li><a class="nav-link" href="tabelfaskes.php">Data Faskes</a></li>
                 </ul>
@@ -139,12 +149,13 @@
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i> <span>Akses Peta</span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="gmaps-simple.html">Bidan</a></li>
-                  <li><a href="gmaps-simple.html">DSA & DSPOG</a></li>
-                  <li><a href="gmaps-simple.html">Puskesmas</a></li>
-                  <li><a href="gmaps-simple.html">Klinik</a></li>
-                  <li><a href="gmaps-simple.html">Rumah Sakit</a></li>
-                  <li><a href="gmaps-simple.html">Seluruhnya</a></li>
+                  <li><a href="mapsbidan.php">Bidan</a></li>
+                  <li><a href="mapsdsa.php">DSA</a></li>
+                  <li><a href="mapsspog.php">DSPOG</a></li>
+                  <li><a href="mapspuskesmas.php">Puskesmas</a></li>
+                  <li><a href="mapsklinik.php">Klinik</a></li>
+                  <li><a href="mapsrumahsakit.php">Rumah Sakit</a></li>
+                  <li><a href="maps.php">Seluruhnya</a></li>
                 </ul>
               </li>
               <li class="menu-header">Admin</li>

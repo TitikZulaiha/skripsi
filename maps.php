@@ -7,12 +7,13 @@
     header("location:login.php");
   }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Data Jenis Faskes</title>
+  <title>Beranda</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -111,6 +112,7 @@
               <a href="logout.php" class="dropdown-item has-icon text-danger">
                 <i class="fas fa-sign-out-alt"></i> Logout
               </a>
+              </a>
             </div>
           </li>
         </ul>
@@ -118,14 +120,14 @@
       <div class="main-sidebar">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="index.html">SIG Aksesibiliti Ibu dan Anak</a>
+            <a href="index1.html">SIG Aksesibiliti Ibu dan Anak</a>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
-            <a href="index.html">St</a>
+            <a href="index1.html">St</a>
           </div>
           <ul class="sidebar-menu">
           <li class="menu-header">Menu</li>
-          <li><a class="nav-link" href="index.php"><i class="far fa-square"></i> <span>Beranda</span></a></li>
+          <li><a class="nav-link" href="index1.php"><i class="far fa-square"></i> <span>Beranda</span></a></li>
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i> <span>Kelola Data</span></a>
                 <ul class="dropdown-menu">
@@ -139,7 +141,7 @@
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i> <span>Akses Peta</span></a>
                 <ul class="dropdown-menu">
-                <li><a href="mapsbidan.php">Bidan</a></li>
+                  <li><a href="mapsbidan.php">Bidan</a></li>
                   <li><a href="mapsdsa.php">DSA</a></li>
                   <li><a href="mapsspog.php">DSPOG</a></li>
                   <li><a href="mapspuskesmas.php">Puskesmas</a></li>
@@ -155,61 +157,36 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Tabel Data Jenis Faskes</h1>
+            <h1>Peta Aksesibilitas</h1>
             <div class="section-header-breadcrumb">
-              <div class="breadcrumb-item active"><a href="#">Kelola Data</a></div>
-              <div class="breadcrumb-item">Data Jenis Faskes</div>
+              <div class="breadcrumb-item active"><a href="#">Akes Peta</a></div>
+              <div class="breadcrumb-item"><a href="#">Seluruhnya</a></div>
             </div>
           </div>
 
           <div class="section-body">
-            <h2 class="section-title">Tabel</h2>
-            <div class="col-12 col-md-12 col-lg-12">
+            <h2 class="section-title">Peta Aksesibilitas</h2>
+            <p class="section-lead">
+              Here is a simple example using the map, we use the plugin <code>gmaps.js</code> made by <a href="https://github.com/hpneo" target="_blank">@hpneo</a>. You can learn more about this plugin <a href="https://github.com/hpneo/gmaps" target="_blank">here</a>.
+            </p>
+
+            <div class="row">
+              <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Data Jenis Fasilitas Kesehatan</h4>
-                    <div class="card-header-form">
-                      <form>
-                        <div class="input-group">
-                          <input type="text" class="form-control" placeholder="Search">
-                          <div class="input-group-btn">
-                            <button class="btn btn-primary"><i class="fas fa-search"></i></button>
-                          </div>
-                          <a href="formtambahjenisfaskes.php" class="btn btn-primary" >Tambah Data</a>
-                          <a href="cetakjenisfaskes.php" class="btn btn-primary" >Cetak</a>
-                        </div>
-                      </form>
-                    </div>
+                    <h4>Peta Aksesibilitas Seluruhnya</h4>
                   </div>
-                  <div class="card-body p-0">
-                    <div class="table-responsive">
-                      <table class="table table-striped table-md">
-                        <tr>
-                          <th>No</th>
-                          <th>Nama Jenis Faskes</th>
-                          <th>Aksi</th>
-                        </tr>
-                        <?php 
-		include "koneksi.php";
-		$query_mysql= mysql_query("SELECT * FROM datajenis")or die(mysql_error());
-		$nomor = 1;
-		while($data = mysql_fetch_array($query_mysql)){
-			?>
-			<tr>
-				<td><?php echo $nomor++; ?></td>
-				<td><?php echo $data['jenis']; ?></td>
-				<td>
-				<a class="edit btn btn-success" href="editjenis.php?id=<?php echo $data['id']; ?>"> Edit</a> 
-				<a class="hapus btn btn-danger" href="proseshapusjenis.php?id=<?php echo $data['id']; ?>">Hapus</a> 		
-			</td>
-		</tr>
-		<?php } ?>
-          
-                      </table>
-                    </div>
+                  <div class="card-body">
+                    <div class="row mb-4">
+                      <div class="col-4 col-12 col-md-6 col-lg-4">
+                    <div id="map" data-height="400"></div>
                   </div>
-</section>
-</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
       <footer class="main-footer">
         <div class="footer-left">
           Copyright &copy; 2019 <div class="bullet"></div> Made with 💙 by Titik Zulaiha</a>

@@ -1,3 +1,12 @@
+<?php 
+  // mengaktifkan session
+  session_start();
+  
+  // cek apakah user telah login, jika belum login maka di alihkan ke halaman login
+  if($_SESSION['status'] !="login"){
+    header("location:login.php");
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -99,7 +108,7 @@
             <div class="d-sm-none d-lg-inline-block">Hi, Admin</div></a>
             <div class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item has-icon text-danger">
+              <a href="logout.php" class="dropdown-item has-icon text-danger">
                 <i class="fas fa-sign-out-alt"></i> Logout
               </a>
             </div>
@@ -122,6 +131,7 @@
                 <ul class="dropdown-menu">
                   <li><a class="nav-link" href="tabelkel.php">Data Kelurahan</a></li>
                   <li><a class="nav-link" href="tabelkec.php">Data Kecamatan</a></li>
+                  <li><a class="nav-link" href="tabelkab.php">Data Kabupaten</a></li>
                   <li><a class="nav-link" href="tabeljenis.php">Data Jenis Faskes</a></li>
                   <li><a class="nav-link" href="tabelfaskes.php">Data Faskes</a></li>
                 </ul>
