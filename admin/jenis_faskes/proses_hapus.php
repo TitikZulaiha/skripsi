@@ -12,6 +12,6 @@
     mysqli_query($koneksi,"DELETE from datajenis where id_jenis_faskes='$id'");
 
     // mengalihkan halaman kembali ke data_jenis_faskes.php
-    header("location:../data_jenis_faskes.php");
+    header("location:../data_jenis_faskes.php?pesan=hapus");
 
 ?>

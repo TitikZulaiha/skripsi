@@ -6,5 +6,5 @@
     // print_r($jenis_faskes);
 
     mysqli_query($koneksi, "INSERT INTO datajenis VALUES ('','$jenis_faskes')");
-    header("location:../data_jenis_faskes.php");
+    header("location:../data_jenis_faskes.php?pesan=sukses");
 ?>

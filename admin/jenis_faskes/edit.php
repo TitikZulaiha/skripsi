@@ -63,7 +63,7 @@
             </div>
             <ul class="sidebar-menu">
             <li class="menu-header">Menu</li>
-            <li><a class="nav-link" href="../index.php"><i class="far fa-square"></i> <span>Beranda</span></a></li>
+            <li><a class="nav-link" href="../index.php"><i class="far fa-fire"></i> <span>Beranda</span></a></li>
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i> <span>Kelola Data</span></a>
                     <ul class="dropdown-menu">

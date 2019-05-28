@@ -1,12 +1,3 @@
-<?php 
-    // mengaktifkan session
-    session_start();
-    
-    // cek apakah user telah login, jika belum login maka di alihkan ke halaman login
-    if($_SESSION['status'] !="login"){
-        header("location:login.php?pesan=belum_login");
-    }
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,10 +10,14 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
     <!-- CSS Libraries -->
+    <link rel="stylesheet" href="node_modules/jqvmap/dist/jqvmap.min.css">
+    <link rel="stylesheet" href="node_modules/weathericons/css/weather-icons.min.css">
+    <link rel="stylesheet" href="node_modules/weathericons/css/weather-icons-wind.min.css">
+    <link rel="stylesheet" href="node_modules/summernote/dist/summernote-bs4.css">
 
     <!-- Template CSS -->
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/components.css">
 </head>
 
 <body>
@@ -38,41 +33,79 @@
             <div class="search-element">
                 <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
                 <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                <div class="search-backdrop"></div>
+                <div class="search-result">
+                <div class="search-header">
+                    Histories
+                </div>
+                <div class="search-item">
+                    <a href="#">How to hack NASA using CSS</a>
+                    <a href="#" class="search-close"><i class="fas fa-times"></i></a>
+                </div>
+                <div class="search-item">
+                    <a href="#">Kodinger.com</a>
+                    <a href="#" class="search-close"><i class="fas fa-times"></i></a>
+                </div>
+                <div class="search-item">
+                    <a href="#">#Stisla</a>
+                    <a href="#" class="search-close"><i class="fas fa-times"></i></a>
+                </div>
+                <div class="search-header">
+                    Result
+                </div>
+                <div class="search-item">
+                    <a href="#">
+                    <img class="mr-3 rounded" width="30" src="assets/img/products/product-3-50.png" alt="product">
+                    oPhone S9 Limited Edition
+                    </a>
+                </div>
+                <div class="search-item">
+                    <a href="#">
+                    <img class="mr-3 rounded" width="30" src="assets/img/products/product-2-50.png" alt="product">
+                    Drone X2 New Gen-7
+                    </a>
+                </div>
+                <div class="search-item">
+                    <a href="#">
+                    <img class="mr-3 rounded" width="30" src="assets/img/products/product-1-50.png" alt="product">
+                    Headphone Blitz
+                    </a>
+                </div>
+                <div class="search-header">
+                    Projects
+                </div>
+                <div class="search-item">
+                    <a href="#">
+                    <div class="search-icon bg-danger text-white mr-3">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    Stisla Admin Template
+                    </a>
+                </div>
+                <div class="search-item">
+                    <a href="#">
+                    <div class="search-icon bg-primary text-white mr-3">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    Create a new Homepage Design
+                    </a>
+                </div>
+                </div>
             </div>
             </form>
-            <ul class="navbar-nav navbar-right">
-            <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                <img alt="image" src="../assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
-                <div class="d-sm-none d-lg-inline-block">Hi, Admin</div></a>
-                <div class="dropdown-menu dropdown-menu-right">
-                <a href="proses_logout.php" class="dropdown-item has-icon text-danger">
-                    <i class="fas fa-sign-out-alt"></i> Logout
-                </a>
-                </a>
-                </div>
-            </li>
-            </ul>
         </nav>
         <div class="main-sidebar">
             <aside id="sidebar-wrapper">
             <div class="sidebar-brand">
-                <a href="index.php">SIG Aksesibiliti Ibu dan Anak</a>
+                <a href="index.html">SIG Aksesibilitas Ibu dan Anak</a>
             </div>
             <div class="sidebar-brand sidebar-brand-sm">
-                <a href="index.phpl">St</a>
+                <a href="index.html">St</a>
             </div>
             <ul class="sidebar-menu">
             <li class="menu-header">Menu</li>
-            <li><a class="nav-link" href="index.php"><i class="fas fa-fire"></i> <span>Beranda</span></a></li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i> <span>Kelola Data</span></a>
-                    <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="data_kelurahan.php">Data Kelurahan</a></li>
-                    <li><a class="nav-link" href="data_kecamatan.php">Data Kecamatan</a></li>
-                    <li><a class="nav-link" href="data_jenis_faskes.php">Data Jenis Faskes</a></li>
-                    <li><a class="nav-link" href="tabelfaskes.php">Data Faskes</a></li>
-                    </ul>
-                </li>
+            <li><a class="nav-link" href="index1.php"><i class="far fa-square"></i> <span>Beranda</span></a></li>
+            <li><a class="nav-link" href="datafaskes.php"><i class="fas fa-th-large"></i> <span>Lihat Data Faskes</span></a></li>
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i> <span>Akses Peta</span></a>
                     <ul class="dropdown-menu">
@@ -85,6 +118,8 @@
                     <li><a href="maps.php">Seluruhnya</a></li>
                     </ul>
                 </li>
+                <li class="menu-header">Admin</li>
+                <li><a class="nav-link" href="admin/login.php"><i class="far fa-square"></i> <span>Masuk</span></a></li>
             </aside>
         </div>
 
@@ -123,12 +158,18 @@
     <script src="assets/js/stisla.js"></script>
 
     <!-- JS Libraies -->
+    <script src="../node_modules/simpleweather/jquery.simpleWeather.min.js"></script>
+    <script src="../node_modules/chart.js/dist/Chart.min.js"></script>
+    <script src="../node_modules/jqvmap/dist/jquery.vmap.min.js"></script>
+    <script src="../node_modules/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="../node_modules/summernote/dist/summernote-bs4.js"></script>
+    <script src="../node_modules/chocolat/dist/js/jquery.chocolat.min.js"></script>
 
     <!-- Template JS File -->
-    <script src="../assets/js/scripts.js"></script>
-    <script src="../assets/js/custom.js"></script>
+    <script src="assets/js/scripts.js"></script>
+    <script src="assets/js/custom.js"></script>
 
     <!-- Page Specific JS File -->
-    <script src="../assets/js/page/index-0.js"></script>
+    <script src="assets/js/page/index-0.js"></script>
 </body>
 </html>
