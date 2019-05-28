@@ -119,7 +119,7 @@
                 </ul>
               </li>
               <li class="menu-header">Admin</li>
-              <li><a class="nav-link" href="login.php"><i class="far fa-square"></i> <span>Masuk</span></a></li>
+              <li><a class="nav-link" href="admin/login.php"><i class="far fa-square"></i> <span>Masuk</span></a></li>
         </aside>
       </div>
 

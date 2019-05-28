@@ -1,19 +1,10 @@
-<?php
-$user_name	 	= "root";
-$password		= "";
-$database 		= "skripsi";
-$host_name 		= "localhost";
+<?php 
 
-$host 			=mysql_connect($host_name, $user_name, $password);
-$db 			=mysql_select_db($database);
- 
-/*if ($db) {
+$koneksi = mysqli_connect("localhost","root","","skripsi");
 
- echo "Database  Ada";
+// Check connection
+if (mysqli_connect_errno()){
+	echo "Koneksi database gagal : " . mysqli_connect_error();
+}
 
-}else {
-
- echo "Database Tidak Ada";
-
-}*/
 ?>
