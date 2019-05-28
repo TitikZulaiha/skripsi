@@ -127,8 +127,8 @@
                         <div class="buttons">
                             <div class="card-header-form">
                                 <div class="input-group">
-                                    <a href="jenis_faskes/tambah_jenis_faskes.php" class="btn btn-primary" ><i class="fas fa-plus"></i> Tambah Data</a>
-                                    <a href="cetakjenisfaskes.php" class="btn btn-warning" ><i class="fas fa-print"></i> Cetak</a>
+                                    <a href="kabupaten/tambah_kabupaten.php" class="btn btn-primary" ><i class="fas fa-plus"></i> Tambah Data</a>
+                                    <a href="cetakkabupaten.php" class="btn btn-warning" ><i class="fas fa-print"></i> Cetak</a>
                                 </div>
                             </div>
                         </div>
@@ -136,11 +136,11 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="data_kelurahan" class="table table-striped">
+                            <table id="data_kabupaten" class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Jenis Fasilitas Kesehatan</th>
+                                        <th>Nama Kabupaten</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -148,15 +148,15 @@
                                     <?php 
                                         include '../koneksi.php';
                                         $no = 1;
-                                        $data = mysqli_query($koneksi,"select * from datajenis");
+                                        $data = mysqli_query($koneksi,"select * from kabupaten");
                                         while($d = mysqli_fetch_array($data)){
                                             ?>
                                             <tr>
                                                 <td><?php echo $no++; ?></td>
-                                                <td><?php echo $d['jenis_faskes']; ?></td>
+                                                <td><?php echo $d['nama_kabupaten']; ?></td>
                                                 <td>
-                                                    <a class="btn btn-primary" href="jenis_faskes/edit.php?id=<?php echo $d['id_jenis_faskes']; ?>"><i class="fas fa-edit"></i></a>
-                                                    <a class="btn btn-danger" href="jenis_faskes/proses_hapus.php?id=<?php echo $d['id_jenis_faskes']; ?>"><i class="fas fa-trash"></i></a>
+                                                    <a class="btn btn-primary" href="kabupaten/edit.php?id=<?php echo $d['id_kabupaten']; ?>"><i class="fas fa-edit"></i></a>
+                                                    <a class="btn btn-danger" href="kabupaten/proses_hapus.php?id=<?php echo $d['id_kabupaten']; ?>"><i class="fas fa-trash"></i></a>
                                                 </td>
                                             </tr>
                                             <?php 
@@ -206,7 +206,7 @@
 
     <script>
         $(document).ready(function() {
-            $('#data_kelurahan').DataTable();
+            $('#data_kabupaten').DataTable();
         });
     </script>
     <script>
