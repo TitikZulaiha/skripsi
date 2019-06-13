@@ -93,10 +93,10 @@
         <div class="main-content">
             <section class="section">
             <div class="section-header">
-                <h1>Data Jenis Fasilitas Kesehatan</h1>
+                <h1>Data Kelurahan</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item"><a href="#">Beranda</a></div>
-                    <div class="breadcrumb-item"><a href="#">Data Jenis Fasilitas Kesehatan</a></div>
+                    <div class="breadcrumb-item"><a href="#">Data Kelurahan</a></div>
                     <div class="breadcrumb-item active"><a href="#">Tambah Data</a></div>
                 </div>
             </div>
@@ -105,7 +105,7 @@
                     <div class="card-header">
                         <div class="buttons">
                             <div class="card-header-form">
-                                <h4>Tambah Data Jenis Fasilitas Kesehatan</h4>
+                                <h4>Tambah Kelurahan</h4>
                             </div>
                         </div>
                     </div>
@@ -113,15 +113,35 @@
                     <div class="card-body">
                         <form action="proses_tambah.php" method="post">
                             <div class="form-group row mb-4">
-                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Jenis Fasilitas Kesehatan <small class="text-danger" tyle="font-size:20px">*</small></label>
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3" >Nama Kelurahan <small class="text-danger" tyle="font-size:20px">*</small></label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control" name="jenis_faskes">
+                                        <input type="text" class="form-control" name="nama_kelurahan">
                                     </div>
                             </div>
                             <div class="form-group row mb-4">
-                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Kecamatan <small class="text-danger" tyle="font-size:20px">*</small></label>
                                     <div class="col-sm-12 col-md-7">
-                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                        <select class="form-control" name="id_kecamatan" required>
+                                            <option value=0 selected>-Pilih-</option>
+                                            <?php 
+                                            include '../../koneksi.php';
+                                            $data = mysqli_query($koneksi,"select * from kecamatan");
+                                            while($rows = mysqli_fetch_array($data)){
+                                            ?>
+                                                 <option value="<?php echo $rows['id_kecamatan'];?>"><?php echo $rows['nama_kecamatan'];?></option>
+                                            <?php
+                                            }
+                                            ?>
+
+                            
+                                            <!--  -->
+                                        </select>
+                                    </div>
+
+                            <div class="form-group row mb-4">
+                                <label class="col-form-label text-md-center col-12 col-md-3 col-lg-3"></label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <button type="submit" class="btn btn-primary center-block">Simpan</button>
                                     </div>
                             </div>
                         </form>
@@ -159,7 +179,7 @@
 
     <script>
         $(document).ready(function() {
-            $('#data_kelurahan').DataTable();
+            $('#data_kecamatan').DataTable();
         });
     </script>
 </body>

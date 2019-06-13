@@ -101,17 +101,34 @@
                 <h1>Data Kecamatan</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item"><a href="#">Beranda</a></div>
-                    <div class="breadcrumb-item active"><a href="#">Data Kecamatan</a></div>
+                    <div class="breadcrumb-item active"><a href="#">Data kecamatan</a></div>
                 </div>
             </div>
+            <?php 
+                if(isset($_GET['pesan'])){
+                    if($_GET['pesan'] == "sukses"){
+                        echo "<div id='myalert' class='alert alert-success alert-dismissable'>
+                                Data berhasil ditambahkan!
+                            </div>";
+                    }else if($_GET['pesan'] == "hapus"){
+                        echo "<div id='myalert' class='alert alert-success alert-dismissable'>
+                                Data berhasil dihapus!
+                            </div>";
+                    }else if($_GET['pesan'] == "edit"){
+                        echo "<div id='myalert' class='alert alert-success alert-dismissable'>
+                                Data berhasil diupdate!
+                            </div>";
+                        }
+                }
+            ?>
             <div class="section-body">
                 <div class="card">
                     <div class="card-header">
                         <div class="buttons">
                             <div class="card-header-form">
                                 <div class="input-group">
-                                    <a href="formtambahjenisfaskes.php" class="btn btn-primary" >Tambah Data</a>
-                                    <a href="cetakjenisfaskes.php" class="btn btn-warning" >Cetak</a>
+                                    <a href="kecamatan/tambah_kecamatan.php" class="btn btn-primary" ><i class="fas fa-plus"></i> Tambah Data</a>
+                                    <a href="cetakkecamatan.php" class="btn btn-warning" ><i class="fas fa-print"></i> Cetak</a>
                                 </div>
                             </div>
                         </div>
@@ -119,25 +136,34 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="data_kelurahan" class="table table-striped">
+                            <table id="data_kecamatan" class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Kecamatan</th>
-                                        <th>Kabupaten</th>
+                                        <th>Nama Kecamatan</th>
+                                        <th>Nama Kabupaten</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Gunung Sugih</td>
-                                        <td>Punggur</td>
-                                        <td>
-                                            <button class="btn btn-primary"><i class="fas fa-edit"></i></button>
-                                            <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
-                                        </td>
-                                    </tr>
+                                    <?php 
+                                        include '../koneksi.php';
+                                        $no = 1;
+                                        $data = mysqli_query($koneksi,"SELECT * FROM kecamatan INNER JOIN kabupaten ON kabupaten.id_kabupaten = kecamatan.id_kabupaten");
+                                        while($d = mysqli_fetch_array($data)){
+                                            ?>
+                                            <tr>
+                                                <td><?php echo $no++; ?></td>
+                                                <td><?php echo $d['nama_kecamatan']; ?></td>
+                                                <td><?php echo $d['nama_kabupaten']; ?></td>
+                                                <td>
+                                                    <a class="btn btn-primary" href="kecamatan/edit.php?id=<?php echo $d['id_kecamatan']; ?>"><i class="fas fa-edit"></i></a>
+                                                    <a class="btn btn-danger" href="kecamatan/proses_hapus.php?id=<?php echo $d['id_kecamatan']; ?>"><i class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                            <?php 
+                                        }
+                                    ?>
                                 </tbody>
                             </table>
                     </div>
@@ -182,8 +208,11 @@
 
     <script>
         $(document).ready(function() {
-            $('#data_kelurahan').DataTable();
+            $('#data_kecamatan').DataTable();
         });
+    </script>
+    <script>
+        $('#myalert').delay('slow').slideDown('slow').delay(4100).slideUp(600);
     </script>
 </body>
 </html>

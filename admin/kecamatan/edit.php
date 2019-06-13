@@ -15,17 +15,12 @@
     <title>Beranda</title>
 
     <!-- General CSS Files -->
-    <link rel="stylesheet" href="../assets/modules/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-    <!-- CSS Libraries -->
-    <link rel="stylesheet" href="../assets/modules/datatables/datatables.min.css">
-    <link rel="stylesheet" href="../assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="../assets/modules/datatables/Select-1.2.4/css/select.bootstrap4.min.css">
-
     <!-- Template CSS -->
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
 
 
 </head>
@@ -47,7 +42,7 @@
             </form>
             <ul class="navbar-nav navbar-right">
             <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                <img alt="image" src="../assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
+                <img alt="image" src="../../assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
                 <div class="d-sm-none d-lg-inline-block">Hi, Admin</div></a>
                 <div class="dropdown-menu dropdown-menu-right">
                 <a href="proses_logout.php" class="dropdown-item has-icon text-danger">
@@ -61,21 +56,21 @@
         <div class="main-sidebar">
             <aside id="sidebar-wrapper">
             <div class="sidebar-brand">
-                <a href="index.php">SIG Aksesibiliti Ibu dan Anak</a>
+                <a href="../index.php">SIG Aksesibiliti Ibu dan Anak</a>
             </div>
             <div class="sidebar-brand sidebar-brand-sm">
-                <a href="index.phpl">St</a>
+                <a href="../index.php">St</a>
             </div>
             <ul class="sidebar-menu">
             <li class="menu-header">Menu</li>
-            <li><a class="nav-link" href="index.php"><i class="fas fa-fire"></i> <span>Beranda</span></a></li>
+            <li><a class="nav-link" href="../index.php"><i class="far fa-fire"></i> <span>Beranda</span></a></li>
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i> <span>Kelola Data</span></a>
                     <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="data_kabupaten.php">Data Kabupaten</a></li>
-                    <li><a class="nav-link" href="data_kelurahan.php">Data Kelurahan</a></li>
-                    <li><a class="nav-link" href="data_kecamatan.php">Data Kecamatan</a></li>
-                    <li><a class="nav-link" href="data_jenis_faskes.php">Data Jenis Faskes</a></li>
+                    <li><a class="nav-link" href="../data_kabupaten.php">Data Kabupaten</a></li>
+                    <li><a class="nav-link" href="../data_kelurahan.php">Data Kelurahan</a></li>
+                    <li><a class="nav-link" href="../data_kecamatan.php">Data Kecamatan</a></li>
+                    <li><a class="nav-link" href="../data_jenis_faskes.php">Data Jenis Faskes</a></li>
                     <li><a class="nav-link" href="tabelfaskes.php">Data Faskes</a></li>
                     </ul>
                 </li>
@@ -98,73 +93,68 @@
         <div class="main-content">
             <section class="section">
             <div class="section-header">
-                <h1>Data Kabupaten</h1>
+                <h1>Data Kecamatan</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item"><a href="#">Beranda</a></div>
-                    <div class="breadcrumb-item active"><a href="#">Data Kabupaten</a></div>
+                    <div class="breadcrumb-item"><a href="#">Edit Data Kecamatan</a></div>
+                    <div class="breadcrumb-item active"><a href="#">Edit Data</a></div>
                 </div>
             </div>
-            <?php 
-                if(isset($_GET['pesan'])){
-                    if($_GET['pesan'] == "sukses"){
-                        echo "<div id='myalert' class='alert alert-success alert-dismissable'>
-                                Data berhasil ditambahkan!
-                            </div>";
-                    }else if($_GET['pesan'] == "hapus"){
-                        echo "<div id='myalert' class='alert alert-success alert-dismissable'>
-                                Data berhasil dihapus!
-                            </div>";
-                    }else if($_GET['pesan'] == "edit"){
-                        echo "<div id='myalert' class='alert alert-success alert-dismissable'>
-                                Data berhasil diupdate!
-                            </div>";
-                        }
-                }
-            ?>
             <div class="section-body">
                 <div class="card">
                     <div class="card-header">
                         <div class="buttons">
                             <div class="card-header-form">
-                                <div class="input-group">
-                                    <a href="kabupaten/tambah_kabupaten.php" class="btn btn-primary" ><i class="fas fa-plus"></i> Tambah Data</a>
-                                    <a href="cetakkabupaten.php" class="btn btn-warning" ><i class="fas fa-print"></i> Cetak</a>
-                                </div>
+                                <h4>Edit Data Kecamatan</h4>
                             </div>
                         </div>
                     </div>
 
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <table id="data_kabupaten" class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama Kabupaten</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php 
-                                        include '../koneksi.php';
-                                        $no = 1;
-                                        $data = mysqli_query($koneksi,"select * from kabupaten");
-                                        while($d = mysqli_fetch_array($data)){
-                                            ?>
-                                            <tr>
-                                                <td><?php echo $no++; ?></td>
-                                                <td><?php echo $d['nama_kabupaten']; ?></td>
-                                                <td>
-                                                    <a class="btn btn-primary" href="kabupaten/edit.php?id=<?php echo $d['id_kabupaten']; ?>"><i class="fas fa-edit"></i></a>
-                                                    <a class="btn btn-danger" href="kabupaten/proses_hapus.php?id=<?php echo $d['id_kabupaten']; ?>"><i class="fas fa-trash"></i></a>
-                                                </td>
-                                            </tr>
+                        <?php
+                            include '../../koneksi.php';
+                            $id = $_GET['id'];
+                            $data = mysqli_query($koneksi,"select * from kecamatan where id_kecamatan='$id'");
+                            while($d = mysqli_fetch_array($data)){
+                        ?>
+                        <form action="proses_edit.php" method="post">
+                            <div class="form-group row mb-4">
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Edit Nama Kecamatan <small class="text-danger" tyle="font-size:20px">*</small></label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <input type="hidden" class="form-control" name="id_kecamatan" value="<?php echo $d['id_kecamatan']; ?>">
+                                        <input type="text" class="form-control" name="nama_kecamatan" value="<?php echo $d['nama_kecamatan']; ?>">
+                                    </div>
+                            </div>
+                        <form action="proses_edit.php" method="post">
+                            <div class="form-group row mb-4">
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Edit Nama Kecamatan <small class="text-danger" tyle="font-size:20px">*</small></label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <select class="form-control" name="id_kabupaten" required>
+                                            <option value=0 selected>-Pilih-</option>
                                             <?php 
-                                        }
-                                    ?>
-                                </tbody>
-                            </table>
-                    </div>
+                                            include '../../koneksi.php';
+                                            $data = mysqli_query($koneksi,"select * from kabupaten");
+                                            while($rows = mysqli_fetch_array($data)){
+                                            ?>
+                                                 <option value="<?php echo $rows['id_kabupaten'];?>"><?php echo $rows['nama_kabupaten'];?></option>
+                                            <?php
+                                            }
+                                            ?>
+
+                            
+                                            <!--  -->
+                                        </select>
+                                    </div>
+                            <div class="form-group row mb-4">
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                    </div>
+                            </div>
+                        </form>
+                        <?php 
+                            }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -188,29 +178,19 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="../assets/js/stisla.js"></script>
-
-    <!-- JS Libraies -->
-    <script src="../assets/modules/datatables/datatables.min.js"></script>
-    <script src="../assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
-    <script src="../assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js"></script>
-    <script src="../assets/modules/jquery-ui/jquery-ui.min.js"></script>    
+    <script src="../../assets/js/stisla.js"></script>
 
     <!-- Template JS File -->
-    <script src="../assets/js/scripts.js"></script>
-    <script src="../assets/js/custom.js"></script>
+    <script src="../../assets/js/scripts.js"></script>
+    <script src="../../assets/js/custom.js"></script>
 
     <!-- Page Specific JS File -->
-    <script src="../assets/js/page/index-0.js"></script>
-    <script src="../assets/js/page/modules-datatables.js"></script>
+    <script src="../../assets/js/page/index-0.js"></script>
 
     <script>
         $(document).ready(function() {
-            $('#data_kabupaten').DataTable();
+            $('#data_kelurahan').DataTable();
         });
-    </script>
-    <script>
-        $('#myalert').delay('slow').slideDown('slow').delay(4100).slideUp(600);
     </script>
 </body>
 </html>

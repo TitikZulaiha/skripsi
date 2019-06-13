@@ -67,6 +67,7 @@
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i> <span>Kelola Data</span></a>
                     <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="data_kabupaten.php">Data Kabupaten</a></li>
                     <li><a class="nav-link" href="data_kelurahan.php">Data Kelurahan</a></li>
                     <li><a class="nav-link" href="data_kecamatan.php">Data Kecamatan</a></li>
                     <li><a class="nav-link" href="data_jenis_faskes.php">Data Jenis Faskes</a></li>
