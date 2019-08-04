@@ -84,7 +84,7 @@
                     <ul class="dropdown-menu">
                     <li><a href="mapsbidan.php">Bidan</a></li>
                     <li><a href="mapsdsa.php">DSA</a></li>
-                    <li><a href="mapsspog.php">DSPOG</a></li>
+                    <li><a href="mapsspog.php">SpOG</a></li>
                     <li><a href="mapspuskesmas.php">Puskesmas</a></li>
                     <li><a href="mapsklinik.php">Klinik</a></li>
                     <li><a href="mapsrumahsakit.php">Rumah Sakit</a></li>
@@ -100,8 +100,8 @@
             <div class="section-header">
                 <h1>Data Jenis Fasilitas Kesehatan</h1>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item"><a href="#">Beranda</a></div>
-                    <div class="breadcrumb-item active"><a href="#">Data Jenis Fasilitas Kesehatan</a></div>
+                    <div class="breadcrumb-item"><a href="index.php">Beranda</a></div>
+                    <div class="breadcrumb-item active"><a href="data_jenis_faskes.php">Data Jenis Fasilitas Kesehatan</a></div>
                 </div>
             </div>
             <?php 

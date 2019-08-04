@@ -95,9 +95,9 @@
             <div class="section-header">
                 <h1>Data Kelurahan</h1>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item"><a href="#">Beranda</a></div>
-                    <div class="breadcrumb-item"><a href="#">Data Kelurahan</a></div>
-                    <div class="breadcrumb-item active"><a href="#">Tambah Data</a></div>
+                    <div class="breadcrumb-item"><a href="../index.php">Beranda</a></div>
+                    <div class="breadcrumb-item"><a href="../data_kelurahan.php">Data Kelurahan</a></div>
+                    <div class="breadcrumb-item active"><a href="../tambah_kelurahan.php">Tambah Data</a></div>
                 </div>
             </div>
             <div class="section-body">

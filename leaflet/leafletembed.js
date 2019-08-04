@@ -17,6 +17,3 @@ function initmap() {
 	map.addLayer(osm);
 }
 
-<link rel="stylesheet" type="text/css" href="leaflet/leaflet.css" />
-<script type="text/javascript" src="leaflet/leaflet.js"></script>
-<script type="text/javascript" src="leaflet/leafletembed.js"></script>

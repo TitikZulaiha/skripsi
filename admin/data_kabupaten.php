@@ -127,7 +127,7 @@
                         <div class="buttons">
                             <div class="card-header-form">
                                 <div class="input-group">
-                                    <a href="kabupaten/tambah_kabupaten.php" class="btn btn-primary" ><i class="fas fa-plus"></i> Tambah Data</a>
+                                    <a href="kabupaten/tambah_kabupaten.php" class="btn btn-primary" ><i class="fas fa-plus"></i> tambah data</a>
                                     <a href="cetakkabupaten.php" class="btn btn-warning" ><i class="fas fa-print"></i> Cetak</a>
                                 </div>
                             </div>

@@ -1,5 +1,6 @@
 <?php 
-
+//membuat koneksi
+//nama server, username, password, nama db
 $koneksi = mysqli_connect("localhost","root","","skripsi");
 
 // Check connection

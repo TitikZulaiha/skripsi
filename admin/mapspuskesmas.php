@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Data Faskes</title>
+    <title>Beranda</title>
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="../assets/modules/bootstrap/css/bootstrap.min.css">
@@ -98,97 +98,85 @@
         <div class="main-content">
             <section class="section">
             <div class="section-header">
-                <h1>Data Faskes</h1>
+                <h1>Peta Aksesibilitas Puskesmas</h1>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item"><a href="index.php">Beranda</a></div>
-                    <div class="breadcrumb-item active"><a href="tabelfaskes.php">Data Faskes</a></div>
+                    <div class="breadcrumb-item"><a href="index.php">Akses Peta</a></div>
+                    <div class="breadcrumb-item active"><a href="mapspuskesmas.php">Peta Puskesmas</a></div>
                 </div>
             </div>
-            <?php 
-                if(isset($_GET['pesan'])){
-                    if($_GET['pesan'] == "sukses"){
-                        echo "<div id='myalert' class='alert alert-success alert-dismissable'>
-                                Data berhasil ditambahkan!
-                            </div>";
-                    }else if($_GET['pesan'] == "hapus"){
-                        echo "<div id='myalert' class='alert alert-success alert-dismissable'>
-                                Data berhasil dihapus!
-                            </div>";
-                    }else if($_GET['pesan'] == "edit"){
-                        echo "<div id='myalert' class='alert alert-success alert-dismissable'>
-                                Data berhasil diupdate!
-                            </div>";
-                        }
-                }
-            ?>
+
             <div class="section-body">
+            <h2 class="section-title">Peta Aksesibilitas Puskesmas</h2>
+            <p class="section-lead">
+              Here is a simple example using the map, we use the plugin <code>gmaps.js</code> made by <a href="https://github.com/hpneo" target="_blank">@hpneo</a>. You can learn more about this plugin <a href="https://github.com/hpneo/gmaps" target="_blank">here</a>.
+            </p>
+
+            <div class="row">
+              <div class="col-12">
                 <div class="card">
-                    <div class="card-header">
-                        <div class="buttons">
-                            <div class="card-header-form">
-                                <div class="input-group">
-                                    <a href="faskes/tambah_faskes.php" class="btn btn-primary" ><i class="fas fa-plus"></i> Tambah Data</a>
-                                    <a href="cetakfaskes.php" class="btn btn-warning" ><i class="fas fa-print"></i> Cetak</a>
-                                </div>
-                            </div>
+                  <div class="card-header">
+                    <h4>Peta Aksesibilitas Puskesmas</h4>
+                  </div>
+
+                  <div class="card-body">
+                    <div class="row">
+                        <div class="col-4 col-12 col-md-6 col-lg-4">
+                            <?php
+                                include '../koneksi.php';
+                                ?>
+                            <div id="dvMap" style="width: 1000px; height: 550px"></div>
+                            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDP3Pgxfyxnzmop6amI-Un99r3MYjapD_4&libraries=places" async defer></script>
+                            <script type="text/javascript">
+                                var markers = [
+                                <?php
+                                $sql = mysqli_query($koneksi, "SELECT * FROM datafaskes WHERE id_jenis_faskes='4'");
+                                while(($data =  mysqli_fetch_assoc($sql))) {
+                                ?>
+                                {
+                                    "lat": '<?php echo $data['latitude']; ?>',
+                                    "long": '<?php echo $data['longitude']; ?>',
+                                    "nama_faskes": '<?php echo $data['nama_faskes']; ?>'
+                                },
+                                <?php
+                                }
+                                ?>
+                                ];
+                                </script>
+                                <script type="text/javascript">
+                                    window.onload = function () {
+                                        var mapOptions = {
+                                        center: new google.maps.LatLng(-5.4286681,105.2006974),
+                                            zoom: 11,
+                                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                                        }; 
+                                        var infoWindow = new google.maps.InfoWindow();
+                                        var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+                                        for (i = 0; i < markers.length; i++) {
+                                            var data = markers[i];
+                                    var latnya = data.lat;
+                                    var longnya = data.long;
+                                    
+                                    var myLatlng = new google.maps.LatLng(latnya, longnya);
+                                            var marker = new google.maps.Marker({
+                                                position: myLatlng,
+                                                map: map,
+                                                title: data.alamat
+                                            });
+                                            (function (marker, data) {
+                                                google.maps.event.addListener(marker, "click", function (e) {
+                                                    infoWindow.setContent('<b>Lokasi</b> :' + data.nama_faskes + '<br>');
+                                                    infoWindow.open(map, marker);
+                                                });
+                                            })(marker, data);
+                                        }
+                                    }
+                                </script>
+                            </div>  
                         </div>
                     </div>
-
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table id="tabelfaskes" class="table table-striped">
-                                <thead>
-                                    <tr>
-                                    <th>No</th>
-                                    <th>Nama Faskes</th>
-                                    <th>Lama Jam Buka</th>
-                                    <th>No. Telp</th>
-                                    <th>Jenis Faskes</th>
-                                    <th>Tipe RS</th>
-                                    <th>Tahun Terbit</th>
-                                    <th>Alamat</th>
-                                    <th>Kelurahan</th>
-                                    <th>Latitude</th>
-                                    <th>Longitude</th>
-                                    <th>Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php 
-                                        include '../koneksi.php';
-                                        $no = 1;
-                                        $data = mysqli_query($koneksi,"SELECT * FROM datafaskes 
-                                                                        INNER JOIN kelurahan ON kelurahan.id_kelurahan = datafaskes.id_kelurahan 
-                                                                        JOIN datajenis ON datajenis.id_jenis_faskes = datafaskes.id_jenis_faskes
-                                                                        JOIN jam_buka ON jam_buka.id_jam_buka= datafaskes.id_jam_buka");
-                                        while($d = mysqli_fetch_array($data)){
-                                            ?>
-                                            <tr>
-                                                <td><?php echo $no++; ?></td>
-                                                <td><?php echo $d['nama_faskes']; ?></td>
-                                                <td><?php echo $d['jam_buka']; ?></td>
-                                                <td><?php echo $d['telp']; ?></td>
-                                                <td><?php echo $d['jenis_faskes']; ?></td>
-                                                <td><?php echo $d['tipe']; ?></td>
-                                                <td><?php echo $d['tahun']; ?></td>
-                                                <td><?php echo $d['alamat']; ?></td>
-                                                <td><?php echo $d['nama_kelurahan']; ?></td>
-                                                <td><?php echo $d['latitude']; ?></td>
-                                                <td><?php echo $d['longitude']; ?></td>
-                                                <td>
-                                                    <a class="btn btn-primary" href="faskes/edit.php?id=<?php echo $d['id_faskes']; ?>"><i class="fas fa-edit"></i></a>
-                                                    <a class="btn btn-danger" href="faskes/proses_hapus.php?id=<?php echo $d['id_faskes']; ?>"><i class="fas fa-trash"></i></a>
-                                                </td>
-                                            </tr>
-                                            <?php 
-                                        }
-                                    ?>
-                                </tbody>
-                            </table>
-                    </div>
-                    </div>
                 </div>
             </div>
+            
             </section>
         </div>
 
@@ -227,7 +215,7 @@
 
     <script>
         $(document).ready(function() {
-            $('#tabelfaskes').DataTable();
+            $('#data_kabupaten').DataTable();
         });
     </script>
     <script>

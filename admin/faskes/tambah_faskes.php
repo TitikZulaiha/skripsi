@@ -71,19 +71,19 @@
                     <li><a class="nav-link" href="../data_kelurahan.php">Data Kelurahan</a></li>
                     <li><a class="nav-link" href="../data_kecamatan.php">Data Kecamatan</a></li>
                     <li><a class="nav-link" href="../data_jenis_faskes.php">Data Jenis Faskes</a></li>
-                    <li><a class="nav-link" href="tabelfaskes.php">Data Faskes</a></li>
+                    <li><a class="nav-link" href="../tabelfaskes.php">Data Faskes</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i> <span>Akses Peta</span></a>
                     <ul class="dropdown-menu">
-                    <li><a href="mapsbidan.php">Bidan</a></li>
-                    <li><a href="mapsdsa.php">DSA</a></li>
-                    <li><a href="mapsspog.php">DSPOG</a></li>
-                    <li><a href="mapspuskesmas.php">Puskesmas</a></li>
-                    <li><a href="mapsklinik.php">Klinik</a></li>
-                    <li><a href="mapsrumahsakit.php">Rumah Sakit</a></li>
-                    <li><a href="maps.php">Seluruhnya</a></li>
+                    <li><a href="../mapsbidan.php">Bidan</a></li>
+                    <li><a href="../mapsdsa.php">DSA</a></li>
+                    <li><a href="../mapsspog.php">SpOG</a></li>
+                    <li><a href="../mapspuskesmas.php">Puskesmas</a></li>
+                    <li><a href="../mapsklinik.php">Klinik</a></li>
+                    <li><a href="../mapsrumahsakit.php">Rumah Sakit</a></li>
+                    <li><a href="../maps.php">Seluruhnya</a></li>
                     </ul>
                 </li>
             </aside>
@@ -95,9 +95,9 @@
             <div class="section-header">
                 <h1>Data Faskes</h1>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item"><a href="#">Beranda</a></div>
-                    <div class="breadcrumb-item"><a href="#">Data Faskes</a></div>
-                    <div class="breadcrumb-item active"><a href="#">Tambah Data</a></div>
+                    <div class="breadcrumb-item"><a href="../index.php">Beranda</a></div>
+                    <div class="breadcrumb-item"><a href="../tabelfaskes.php">Data Faskes</a></div>
+                    <div class="breadcrumb-item active"><a href="../tambah_faskes.php">Tambah Data</a></div>
                 </div>
             </div>
             <div class="section-body">
@@ -119,15 +119,26 @@
                                     </div>
                             </div>
                             <div class="form-group row mb-4">
-                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3" >Jam Buka <small class="text-danger" tyle="font-size:20px">*</small></label>
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3" >Lama Jam Buka <small class="text-danger" tyle="font-size:20px">*</small></label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control" name="jam_buka">
+                                        <select class="form-control" name="jam_buka" required>
+                                        <option value=0 selected>-Pilih-</option>
+                                            <?php 
+                                            include '../../koneksi.php';
+                                            $data = mysqli_query($koneksi,"select * from jam_buka");
+                                            while($rows = mysqli_fetch_array($data)){
+                                            ?>
+                                                 <option value="<?php echo $rows['id_jam_buka'];?>"><?php echo $rows['jam_buka'];?></option>
+                                            <?php
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
                             </div>
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3" >No. Telp <small class="text-danger" tyle="font-size:20px">*</small></label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control" name="telp">
+                                        <input type="number" class="form-control" name="telp">
                                     </div>
                             </div>
                             <div class="form-group row mb-4">
@@ -151,13 +162,13 @@
                                     </div>
                                  </div>
                             <div class="form-group row mb-4">
-                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3" >Tipe <small class="text-danger" tyle="font-size:20px">*</small></label>
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3" >Tipe RS <small class="text" tyle="font-size:20px"></small></label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control" name="telp">
+                                        <input type="text" class="form-control" name="tipe">
                                     </div>
                             </div>
                             <div class="form-group row mb-4">
-                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3" >Tahun<small class="text-danger" tyle="font-size:20px">*</small></label>
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3" >Tahun Terbit<small class="text-danger" tyle="font-size:20px">*</small></label>
                                     <div class="col-sm-12 col-md-7">
                                         <input type="text" class="form-control" name="tahun">
                                     </div>
@@ -211,43 +222,7 @@
                                             <!--  -->
                                         </select>
                                     </div>
-                                    </div>
-                                <div class="form-group row mb-4">
-                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Kecamatan <small class="text-danger" tyle="font-size:20px">*</small></label>
-                                    <div class="col-sm-12 col-md-7">
-                                        <select class="form-control" name="id_kecamatan" required>
-                                            <option value=0 selected>-Pilih-</option>
-                                            <?php 
-                                            include '../../koneksi.php';
-                                            $data = mysqli_query($koneksi,"select * from kecamatan");
-                                            while($rows = mysqli_fetch_array($data)){
-                                            ?>
-                                                 <option value="<?php echo $rows['id_kecamatan'];?>"><?php echo $rows['nama_kecamatan'];?></option>
-                                            <?php
-                                            }
-                                            ?>
-                                           
-                                        </select>
-                                    </div>
-                                    </div>
-                            <div class="form-group row mb-4">
-                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Kabupaten <small class="text-danger" tyle="font-size:20px">*</small></label>
-                                    <div class="col-sm-12 col-md-7">
-                                        <select class="form-control" name="id_kabupaten" required>
-                                            <option value=0 selected>-Pilih-</option>
-                                            <?php 
-                                            include '../../koneksi.php';
-                                            $data = mysqli_query($koneksi,"select * from kabupaten");
-                                            while($rows = mysqli_fetch_array($data)){
-                                            ?>
-                                                 <option value="<?php echo $rows['id_kabupaten'];?>"><?php echo $rows['nama_kabupaten'];?></option>
-                                            <?php
-                                            }
-                                            ?>
-                                            
-                                        </select>
-                                    </div>
-                                    </div>
+                            </div>
 
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-center col-12 col-md-3 col-lg-3"></label>
@@ -279,7 +254,7 @@
 
         var mapOptions = {
             center: new google.maps.LatLng(-5.3971396, 105.2667887),
-            zoom: 8,
+            zoom: 11,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         var infoWindow = new google.maps.InfoWindow();
