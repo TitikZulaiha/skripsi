@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Beranda</title>
+    <title>Maps DSA</title>
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="../assets/modules/bootstrap/css/bootstrap.min.css">
@@ -40,10 +40,7 @@
                 <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
                 <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
             </ul>
-            <div class="search-element">
-                <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
-                <button class="btn" type="submit"><i class="fas fa-search"></i></button>
-            </div>
+            
             </form>
             <ul class="navbar-nav navbar-right">
             <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
@@ -97,86 +94,350 @@
         <!-- Main Content -->
         <div class="main-content">
             <section class="section">
-            <div class="section-header">
-                <h1>Data Kabupaten</h1>
-                <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item"><a href="index.php">Akses Peta</a></div>
-                    <div class="breadcrumb-item active"><a href="mapsdsa.php">Peta RS</a></div>
+                <div class="section-header">
+                    <h1>Maps DSA</h1>
+                    <div class="section-header-breadcrumb">
+                        <div class="breadcrumb-item"><a href="index.php">Akses Peta</a></div>
+                        <div class="breadcrumb-item active"><a href="mapsdsa.php">Peta RS</a></div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="section-body">
-            <h2 class="section-title">Peta Aksesibilitas</h2>
-            <p class="section-lead">
-              Here is a simple example using the map, we use the plugin <code>gmaps.js</code> made by <a href="https://github.com/hpneo" target="_blank">@hpneo</a>. You can learn more about this plugin <a href="https://github.com/hpneo/gmaps" target="_blank">here</a>.
-            </p>
+                <div class="section-body">
+                    <h2 class="section-title">Peta Aksesibilitas</h2>
+                    <p class="section-lead">
+                        Here is a simple example using the map, we use the plugin <code>gmaps.js</code> made by <a href="https://github.com/hpneo" target="_blank">@hpneo</a>. You can learn more about this plugin <a href="https://github.com/hpneo/gmaps" target="_blank">here</a>.
+                    </p>
 
-            <div class="row">
-              <div class="col-12">
-                <div class="card">
-                  <div class="card-header">
-                    <h4>Peta Aksesibilitas Rumah Sakit</h4>
-                  </div>
-
-                  <div class="card-body">
                     <div class="row">
-                        <div class="col-4 col-12 col-md-6 col-lg-4">
-                            <?php
-                                include '../koneksi.php';
-                                ?>
-                            <div id="dvMap" style="width: 1000px; height: 550px"></div>
-                            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDP3Pgxfyxnzmop6amI-Un99r3MYjapD_4&libraries=places" async defer></script>
-                            <script type="text/javascript">
-                                var markers = [
-                                <?php
-                                $sql = mysqli_query($koneksi, "SELECT * FROM datafaskes WHERE id_jenis_faskes='6'");
-                                while(($data =  mysqli_fetch_assoc($sql))) {
-                                ?>
-                                {
-                                    "lat": '<?php echo $data['latitude']; ?>',
-                                    "long": '<?php echo $data['longitude']; ?>',
-                                    "nama_faskes": '<?php echo $data['nama_faskes']; ?>'
-                                },
-                                <?php
-                                }
-                                ?>
-                                ];
-                                </script>
-                                <script type="text/javascript">
-                                    window.onload = function () {
-                                        var mapOptions = {
-                                        center: new google.maps.LatLng(-5.4286681,105.2006974),
-                                            zoom: 11,
-                                            mapTypeId: google.maps.MapTypeId.ROADMAP
-                                        }; 
-                                        var infoWindow = new google.maps.InfoWindow();
-                                        var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
-                                        for (i = 0; i < markers.length; i++) {
-                                            var data = markers[i];
-                                    var latnya = data.lat;
-                                    var longnya = data.long;
-                                    
-                                    var myLatlng = new google.maps.LatLng(latnya, longnya);
-                                            var marker = new google.maps.Marker({
-                                                position: myLatlng,
-                                                map: map,
-                                                title: data.alamat
-                                            });
-                                            (function (marker, data) {
-                                                google.maps.event.addListener(marker, "click", function (e) {
-                                                    infoWindow.setContent('<b>Lokasi</b> :' + data.nama_faskes + '<br>');
-                                                    infoWindow.open(map, marker);
-                                                });
-                                            })(marker, data);
-                                        }
-                                    }
-                                </script>
-                            </div>  
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>Peta Aksesibilitas Rumah Sakit</h4>
+                                </div>
+                                <div class="card-body">
+                                    <!-- menu tab -->
+                                    <div class="cointainer">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a data-toggle="tab" href="#menu1">Peta Persebaran 12 Jam</a></li>
+                                            <li><a data-toggle="tab" href="#menu2">Peta Persebaran 24 Jam</a></li>
+                                            <li><a data-toggle="tab" href="#menu3">Peta Aksesibilitas 12 Jam</a></li>
+                                            <li><a data-toggle="tab" href="#menu4">Peta Aksesibilitas 24 Jam</a></li>
+                                        </ul>
+                                        <!-- isi tab -->
+                                        <div class="tab-content">
+                                            <div id="menu1" class="tab-pane fade in active">
+                                                <h3>PETA 1</h3>
+                                                <div class="col-4 col-12 col-md-6 col-lg-4">
+                                                <?php
+                                                    include '../koneksi.php';
+                                                    ?>
+                                                <div id="dvMap" style="width: 1000px; height: 550px"></div>
+                                                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOpdBpwYOOlEcMywl8vXLTBjoHqYXtKDU&callback=initMap" async defer></script>
+                                                <script type="text/javascript">
+                                                    var markers = [
+                                                    <?php
+                                                    $sql = mysqli_query($koneksi, "SELECT * FROM datafaskes WHERE id_jenis_faskes='6'");
+                                                    while(($data =  mysqli_fetch_assoc($sql))) {
+                                                    ?>
+                                                    {
+                                                        "lat": '<?php echo $data['latitude']; ?>',
+                                                        "long": '<?php echo $data['longitude']; ?>',
+                                                        "nama_faskes": '<?php echo $data['nama_faskes']; ?>'
+                                                    },
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                    ];
+                                                    </script>
+                                                    <script type="text/javascript">
+                                                        var map;
+                                                        
+                                                            var mapOptions = {window.onload = function () {
+                                                            center: new google.maps.LatLng(-5.4286681,105.2006974),
+                                                                zoom: 11,
+                                                                mapTypeId: google.maps.MapTypeId.ROADMAP
+                                                            }; 
+                                                            var infoWindow = new google.maps.InfoWindow();
+                                                            var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+                                                            for (i = 0; i < markers.length; i++) {
+                                                                var data = markers[i];
+                                                            var latnya = data.lat;
+                                                            var longnya = data.long;
+                                                            
+                                                            var myLatlng = new google.maps.LatLng(latnya, longnya);
+                                                                    var marker = new google.maps.Marker({
+                                                                        position: myLatlng,
+                                                                        map: map,
+                                                                        title: data.alamat
+                                                                });
+                                                                (function (marker, data) {
+                                                                    google.maps.event.addListener(marker, "click", function (e) {
+                                                                        infoWindow.setContent('<b>Lokasi</b> :' + data.nama_faskes + '<br>');
+                                                                        infoWindow.open(map, marker);
+                                                                    });
+                                                                })(marker, data);
+                                                            }
+                                                        }
+                                                    </script>
+                                                </div> 
+                                            </div>
+
+                                            <div id="menu2" class="tab-pane fade">
+                                                <h3>PETA 2</h3>
+                                                <div class="col-4 col-12 col-md-6 col-lg-4">
+                                                    <?php
+                                                        include '../koneksi.php';
+                                                        ?>
+                                                    <div id="dvMap2" style="width: 1000px; height: 550px"></div>
+                                                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOpdBpwYOOlEcMywl8vXLTBjoHqYXtKDU&callback=initMap" async defer></script>
+                                                    <script type="text/javascript">
+                                                        var markers = [
+                                                        <?php
+                                                        $sql = mysqli_query($koneksi, "SELECT * FROM datafaskes WHERE id_jenis_faskes='4'");
+                                                        while(($data =  mysqli_fetch_assoc($sql))) {
+                                                        ?>
+                                                        {
+                                                            "lat": '<?php echo $data['latitude']; ?>',
+                                                            "long": '<?php echo $data['longitude']; ?>',
+                                                            "nama_faskes": '<?php echo $data['nama_faskes']; ?>'
+                                                        },
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                        ];
+                                                        </script>
+                                                        <script type="text/javascript">
+                                                            window.onload = function () {
+                                                                var mapOptions = {
+                                                                center: new google.maps.LatLng(-5.4286681,105.2006974),
+                                                                    zoom: 11,
+                                                                    // style night mode
+                                                                    styles: [
+                                                                            {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+                                                                            {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
+                                                                            {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
+                                                                            {
+                                                                            featureType: 'administrative.locality',
+                                                                            elementType: 'labels.text.fill',
+                                                                            stylers: [{color: '#d59563'}]
+                                                                            },
+                                                                            {
+                                                                            featureType: 'poi',
+                                                                            elementType: 'labels.text.fill',
+                                                                            stylers: [{color: '#d59563'}]
+                                                                            },
+                                                                            {
+                                                                            featureType: 'poi.park',
+                                                                            elementType: 'geometry',
+                                                                            stylers: [{color: '#263c3f'}]
+                                                                            },
+                                                                            {
+                                                                            featureType: 'poi.park',
+                                                                            elementType: 'labels.text.fill',
+                                                                            stylers: [{color: '#6b9a76'}]
+                                                                            },
+                                                                            {
+                                                                            featureType: 'road',
+                                                                            elementType: 'geometry',
+                                                                            stylers: [{color: '#38414e'}]
+                                                                            },
+                                                                            {
+                                                                            featureType: 'road',
+                                                                            elementType: 'geometry.stroke',
+                                                                            stylers: [{color: '#212a37'}]
+                                                                            },
+                                                                            {
+                                                                            featureType: 'road',
+                                                                            elementType: 'labels.text.fill',
+                                                                            stylers: [{color: '#9ca5b3'}]
+                                                                            },
+                                                                            {
+                                                                            featureType: 'road.highway',
+                                                                            elementType: 'geometry',
+                                                                            stylers: [{color: '#746855'}]
+                                                                            },
+                                                                            {
+                                                                            featureType: 'road.highway',
+                                                                            elementType: 'geometry.stroke',
+                                                                            stylers: [{color: '#1f2835'}]
+                                                                            },
+                                                                            {
+                                                                            featureType: 'road.highway',
+                                                                            elementType: 'labels.text.fill',
+                                                                            stylers: [{color: '#f3d19c'}]
+                                                                            },
+                                                                            {
+                                                                            featureType: 'transit',
+                                                                            elementType: 'geometry',
+                                                                            stylers: [{color: '#2f3948'}]
+                                                                            },
+                                                                            {
+                                                                            featureType: 'transit.station',
+                                                                            elementType: 'labels.text.fill',
+                                                                            stylers: [{color: '#d59563'}]
+                                                                            },
+                                                                            {
+                                                                            featureType: 'water',
+                                                                            elementType: 'geometry',
+                                                                            stylers: [{color: '#17263c'}]
+                                                                            },
+                                                                            {
+                                                                            featureType: 'water',
+                                                                            elementType: 'labels.text.fill',
+                                                                            stylers: [{color: '#515c6d'}]
+                                                                            },
+                                                                            {
+                                                                            featureType: 'water',
+                                                                            elementType: 'labels.text.stroke',
+                                                                            stylers: [{color: '#17263c'}]
+                                                                            }
+                                                                    ],
+                                                                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                                                                }; 
+                                                                var infoWindow = new google.maps.InfoWindow();
+                                                                var map2 = new google.maps.Map(document.getElementById("dvMap2"), mapOptions);
+                                                                
+                                                                for (i = 0; i < markers.length; i++) {
+                                                                    var data = markers[i];
+                                                                var latnya = data.lat;
+                                                                var longnya = data.long;
+                                                                
+                                                                var myLatlng = new google.maps.LatLng(latnya, longnya);
+                                                                        var marker = new google.maps.Marker({
+                                                                            position: myLatlng,
+                                                                            map: map2,
+                                                                            title: data.alamat
+                                                                        });
+                                                                    (function (marker, data) {
+                                                                        google.maps.event.addListener(marker, "click", function (e) {
+                                                                            infoWindow.setContent('<b>Lokasi</b> :' + data.nama_faskes + '<br>');
+                                                                            infoWindow.open(map2, marker);
+                                                                        });
+                                                                    })(marker, data);
+                                                                }
+                                                            }
+                                                        </script>
+                                                </div>
+                                            </div>
+
+                                            <div id="menu3" class="tab-pane fade">
+                                                <h3>PETA 3</h3>
+                                                <div class="col-4 col-12 col-md-6 col-lg-4">
+                                                <?php
+                                                    include '../koneksi.php';
+                                                    ?>
+                                                <div id="dvMap3" style="width: 1000px; height: 550px"></div>
+                                                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOpdBpwYOOlEcMywl8vXLTBjoHqYXtKDU&callback=initMap" async defer></script>
+                                                <script type="text/javascript">
+                                                    var markers = [
+                                                    <?php
+                                                    $sql = mysqli_query($koneksi, "SELECT * FROM datafaskes WHERE id_jenis_faskes='6'");
+                                                    while(($data =  mysqli_fetch_assoc($sql))) {
+                                                    ?>
+                                                    {
+                                                        "lat": '<?php echo $data['latitude']; ?>',
+                                                        "long": '<?php echo $data['longitude']; ?>',
+                                                        "nama_faskes": '<?php echo $data['nama_faskes']; ?>'
+                                                    },
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                    ];
+                                                    </script>
+                                                    <script type="text/javascript">
+                                                        window.onload = function () {
+                                                            var mapOptions = {
+                                                            center: new google.maps.LatLng(-5.4286681,105.2006974),
+                                                                zoom: 11,
+                                                                mapTypeId: google.maps.MapTypeId.ROADMAP
+                                                            }; 
+                                                            var infoWindow = new google.maps.InfoWindow();
+                                                            var map3 = new google.maps.Map(document.getElementById("dvMap3"), mapOptions);
+                                                            for (i = 0; i < markers.length; i++) {
+                                                                var data = markers[i];
+                                                            var latnya = data.lat;
+                                                            var longnya = data.long;
+                                                            
+                                                            var myLatlng = new google.maps.LatLng(latnya, longnya);
+                                                                    var marker = new google.maps.Marker({
+                                                                        position: myLatlng,
+                                                                        map: map3,
+                                                                        title: data.alamat
+                                                                });
+                                                                (function (marker, data) {
+                                                                    google.maps.event.addListener(marker, "click", function (e) {
+                                                                        infoWindow.setContent('<b>Lokasi</b> :' + data.nama_faskes + '<br>');
+                                                                        infoWindow.open(map3, marker);
+                                                                    });
+                                                                })(marker, data);
+                                                            }
+                                                        }
+                                                    </script>
+                                                </div> 
+                                            </div>
+
+                                            <div id="menu4" class="tab-pane fade">
+                                                <h3>PETA 4</h3>
+                                                <div class="col-4 col-12 col-md-6 col-lg-4">
+                                                <?php
+                                                    include '../koneksi.php';
+                                                    ?>
+                                                <div id="dvMap4" style="width: 1000px; height: 550px"></div>
+                                                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOpdBpwYOOlEcMywl8vXLTBjoHqYXtKDU&callback=initMap" async defer></script>
+                                                <script type="text/javascript">
+                                                    var markers = [
+                                                    <?php
+                                                    $sql = mysqli_query($koneksi, "SELECT * FROM datafaskes WHERE id_jenis_faskes='6'");
+                                                    while(($data =  mysqli_fetch_assoc($sql))) {
+                                                    ?>
+                                                    {
+                                                        "lat": '<?php echo $data['latitude']; ?>',
+                                                        "long": '<?php echo $data['longitude']; ?>',
+                                                        "nama_faskes": '<?php echo $data['nama_faskes']; ?>'
+                                                    },
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                    ];
+                                                    </script>
+                                                    <script type="text/javascript">
+                                                        window.onload = function () {
+                                                            var mapOptions = {
+                                                            center: new google.maps.LatLng(-5.4286681,105.2006974),
+                                                                zoom: 11,
+                                                                mapTypeId: google.maps.MapTypeId.ROADMAP
+                                                            }; 
+                                                            var infoWindow = new google.maps.InfoWindow();
+                                                            var map4 = new google.maps.Map(document.getElementById("dvMap4"), mapOptions);
+                                                            for (i = 0; i < markers.length; i++) {
+                                                                var data = markers[i];
+                                                                var latnya = data.lat;
+                                                                var longnya = data.long;
+                                                        
+                                                            var myLatlng = new google.maps.LatLng(latnya, longnya);
+                                                                var marker = new google.maps.Marker({
+                                                                    position: myLatlng,
+                                                                    map: map4,
+                                                                    title: data.alamat
+                                                                });
+                                                                (function (marker, data) {
+                                                                    google.maps.event.addListener(marker, "click", function (e) {
+                                                                        infoWindow.setContent('<b>Lokasi</b> :' + data.nama_faskes + '<br>');
+                                                                        infoWindow.open(map4, marker);
+                                                                    });
+                                                                })(marker, data);
+                                                            }
+                                                        }
+                                                    </script>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
             </section>
         </div>
 
@@ -198,6 +459,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="../assets/js/stisla.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOpdBpwYOOlEcMywl8vXLTBjoHqYXtKDU&callback=initMap" async defer></script>
 
     <!-- JS Libraies -->
     <script src="../assets/modules/datatables/datatables.min.js"></script>

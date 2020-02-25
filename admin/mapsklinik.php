@@ -40,10 +40,7 @@
                 <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
                 <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
             </ul>
-            <div class="search-element">
-                <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
-                <button class="btn" type="submit"><i class="fas fa-search"></i></button>
-            </div>
+            
             </form>
             <ul class="navbar-nav navbar-right">
             <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
@@ -117,7 +114,6 @@
                   <div class="card-header">
                     <h4>Peta Aksesibilitas Klinik</h4>
                   </div>
-
                   <div class="card-body">
                     <div class="row">
                         <div class="col-4 col-12 col-md-6 col-lg-4">
@@ -129,7 +125,7 @@
                             <script type="text/javascript">
                                 var markers = [
                                 <?php
-                                $sql = mysqli_query($koneksi, "SELECT * FROM datafaskes WHERE id_jenis_faskes='5'");
+                                $sql = mysqli_query($koneksi, "SELECT * FROM datafaskes WHERE id_jenis_faskes='5' AND id_jam_buka='1'");
                                 while(($data =  mysqli_fetch_assoc($sql))) {
                                 ?>
                                 {

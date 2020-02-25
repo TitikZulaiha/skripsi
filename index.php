@@ -16,92 +16,120 @@
     <link rel="stylesheet" href="assets/css/components.css">
 </head>
 
-<body class="layout-3">
-  <div id="app">
-    <div class="main-wrapper container">
-      <div class="navbar-bg"></div>
-      <nav class="navbar navbar-expand-lg main-navbar">
-        <a href="index.php" class="navbar-brand sidebar-gone-hide">SIG Aksesibilitas Ibu dan Anak</a>
-        <div class="navbar-nav">
-          <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a>
+<body>
+    <div id="app">
+        <div class="main-wrapper">
+        <div class="navbar-bg"></div>
+        <nav class="navbar navbar-expand-lg main-navbar">
+            <form class="form-inline mr-auto">
+            <ul class="navbar-nav mr-3">
+                <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
+                <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
+            </ul>
+            </form>
+            <ul class="navbar-nav navbar-right">
+              <li class="dropdown"><a href="admin/login.php" class="nav-link">
+              <div class="d-sm-none d-lg-inline-block"> <i class="fas fa-sign-in-alt"></i><b> Login</b></div></a>
+              </li>
+            </ul>
+            </ul>
+        </nav>
+        <div class="main-sidebar">
+            <aside id="sidebar-wrapper">
+            <div class="sidebar-brand">
+                <a href="index.php">SIG Aksesibiliti Ibu dan Anak</a>
+            </div>
+            <div class="sidebar-brand sidebar-brand-sm">
+                <a href="index.phpl">SIG_KIA</a>
+            </div>
+            <ul class="sidebar-menu">
+            <li class="menu-header">Beranda</li>
+            <li><a class="nav-link" href="index.php"><i class="fas fa-fire"></i> <span>Beranda</span></a></li>
+            <li class="menu-header">Akses Peta</li> 
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i> <span>Peta Bidan</span></a>
+                    <ul class="dropdown-menu">
+                    <li><a href="admin/persebaran_bidan_24jam.php">Persebaran 24 Jam</a></li>
+                    <li><a href="persebaran_bidan_12jam.php">Persebaran 12 Jam</a></li>
+                    <li><a href="aksesibilitas_bidan_24jam.php">Aksesibilitas 24 Jam</a></li>
+                    <li><a href="aksesibilitas_bidan_12jam.php">Aksesibilitas 12 Jam</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i><span>Peta DSA</span></a>
+                    <ul class="dropdown-menu">
+                    <li><a href="persebaran_dsa_24jam.php">Persebaran 24 Jam</a></li>
+                    <li><a href="persebaran_dsa_12jam.php">Persebaran 12 Jam</a></li>
+                    <li><a href="aksesibilitas_dsa_24jam.php">Aksesibilitas 24 Jam</a></li>
+                    <li><a href="aksesibilitas_dsa_12jam.php">Aksesibilitas 12 Jam</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i><span>Peta DSPOG</span></a>
+                    <ul class="dropdown-menu">
+                    <li><a href="persebaran_dspog_24jam.php">Persebaran 24 Jam</a></li>
+                    <li><a href="persebaran_dspog_12jam.php">Persebaran 12 Jam</a></li>
+                    <li><a href="aksesibilitas_dspog_24jam.php">Aksesibilitas 24 Jam</a></li>
+                    <li><a href="aksesibilitas_dspog_12jam.php">Aksesibilitas 12 Jam</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i><span>Peta Klinik</span></a>
+                    <ul class="dropdown-menu">
+                    <li><a href="persebaran_klinik_24jam.php">Persebaran 24 Jam</a></li>
+                    <li><a href="persebaran_klinik_12jam.php">Persebaran 12 Jam</a></li>
+                    <li><a href="aksesibilitas_klinik_24jam.php">Aksesibilitas 24 Jam</a></li>
+                    <li><a href="aksesibilitas_klinik_12jam.php">Aksesibilitas 12 Jam</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i><span>Peta Puskesmas</span></a>
+                    <ul class="dropdown-menu">
+                    <li><a href="persebaran_puskesmas_24jam.php">Persebaran 24 Jam</a></li>
+                    <li><a href="persebaran_puskesmas_12jam.php">Persebaran 12 Jam</a></li>
+                    <li><a href="aksesibilitas_puskesmas_24jam.php">Aksesibilitas 24 Jam</a></li>
+                    <li><a href="aksesibilitas_puskesmas_12jam.php">Aksesibilitas 12 Jam</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i><span>Peta Rumah Sakit</span></a>
+                    <ul class="dropdown-menu">
+                    <li><a href="persebaran_rs_24jam.php">Persebaran 24 Jam</a></li>
+                    <li><a href="persebaran_rs_12jam.php">Persebaran 12 Jam</a></li>
+                    <li><a href="aksesibilitas_rs_24jam.php">Aksesibilitas 24 Jam</a></li>
+                    <li><a href="aksesibilitas_rs_12jam.php">Aksesibilitas 12 Jam</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i><span>Peta Seluruhnya</span></a>
+                    <ul class="dropdown-menu">
+                    <li><a href="persebaran_24jam.php">Persebaran 24 Jam</a></li>
+                    <li><a href="persebaran_12jam.php">Persebaran 12 Jam</a></li>
+                    <li><a href="aksesibilitas_24jam.php">Aksesibilitas 24 Jam</a></li>
+                    <li><a href="aksesibilitas_12jam.php">Aksesibilitas 12 Jam</a></li>
+                    </ul>
+                </li>
+            </aside>
         </div>
-        <form class="form-inline ml-auto">
-          <ul class="navbar-nav">
-            <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
-          </ul>
-          <div class="search-element">
-            <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
-            <button class="btn" type="submit"><i class="fas fa-search"></i></button>
-            
-          </div>
-        </form>
-        <ul class="navbar-nav navbar-right">
-          <li class="dropdown"><a href="admin/login.php" class="nav-link">
-            <div class="d-sm-none d-lg-inline-block"> <i class="fas fa-sign-in-alt"></i><b> Login</b></div></a>
-          </li>
-        </ul>
-      </nav>
-
-      <nav class="navbar navbar-secondary navbar-expand-lg">
-        <div class="container">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a href="index.php" class="nav-link "><i class="fas fa-fire"></i><span>Dashboard</span></a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link"><i class="far fa-heart"></i><span>Lihat Data Faskes</span></a>
-            </li>
-            <li class="nav-item dropdown">
-              <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i><span>Akses Peta</span></a>
-              <ul class="dropdown-menu">
-                <li class="nav-item"><a href="#" class="nav-link">Bidan</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">DSA</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">DSPOG</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Puskesmas</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Klinik</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Rumah Sakit</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Seluruhnya</a></li>
-                
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
       <!-- Main Content -->
       <div class="main-content">
-        <section class="section">
-          <div class="section-header">
-            <h1>Top Navigation</h1>
-            <div class="section-header-breadcrumb">
-              <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-              <div class="breadcrumb-item"><a href="#">Layout</a></div>
-              <div class="breadcrumb-item">Top Navigation</div>
+            <section class="section">
+            <div class="section-header">
+                <h1>Beranda</h1>
             </div>
-          </div>
+                <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                    <h4>Selamat Datang di SIG Aksesibilitas Ibu dan Anak</h4>
+                    </div>
+                    <div class="card-body">
+                    <p>SIG Aksesibilitas Ibu dan Anak merupakan sistem informasi berbasis geografis yang menampilkan persebaran dan indeks aksesibilitas fasilitas kesehatan
+                    ibu dan anak yang berada di wilayah kota Bandarlampung. Aksesibilitas merupakan </p>
+                </div>
+            </div>
+            </section>
+        </div>
 
-          <div class="section-body">
-            <h2 class="section-title">This is Example Page</h2>
-            <p class="section-lead">This page is just an example for you to create your own page.</p>
-            <div class="card">
-              <div class="card-header">
-                <h4>Example Card</h4>
-              </div>
-              <div class="card-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              </div>
-              <div class="card-footer bg-whitesmoke">
-                This is card footer
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
       <footer class="main-footer">
         <div class="footer-left">
           Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
