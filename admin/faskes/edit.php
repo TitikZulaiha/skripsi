@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Beranda</title>
+    <title>Edit Data Faskes</title>
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="../../assets/modules/bootstrap/css/bootstrap.min.css">
@@ -340,7 +340,7 @@
         </div>
     </div>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDP3Pgxfyxnzmop6amI-Un99r3MYjapD_4&libraries=places" async defer> </script>
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBt6a6dy99jZcyrlIe7OghOsZ0khO1x4O8&libraries=places" async defer> </script>
     <script type="text/javascript">
     window.onload = function() {
 

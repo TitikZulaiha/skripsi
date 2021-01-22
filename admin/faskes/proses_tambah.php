@@ -12,7 +12,7 @@
     $tipe= $_POST['tipe'];
     $nama_faskes= $_POST['nama_faskes'];
     $tahun= $_POST['tahun'];
-
+    // untuk cek db
     // $data = [
     //     'id_kelurahan' => $_POST['id_kelurahan'],
     //     'id_jenis_faskes' => $_POST['id_jenis_faskes'],

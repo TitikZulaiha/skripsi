@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Beranda</title>
+    <title>Persebaran 12 Jam</title>
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="../assets/modules/bootstrap/css/bootstrap.min.css">
@@ -64,9 +64,7 @@
                 <a href="index.phpl">SIG_KIA</a>
             </div>
             <ul class="sidebar-menu">
-            <li class="menu-header">Beranda</li>
             <li><a class="nav-link" href="index.php"><i class="fas fa-fire"></i> <span>Beranda</span></a></li>
-            <li class="menu-header">Kelola Data</li>
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i> <span>Kelola Data</span></a>
                     <ul class="dropdown-menu">
@@ -75,70 +73,19 @@
                     <li><a class="nav-link" href="data_kecamatan.php">Data Kecamatan</a></li>
                     <li><a class="nav-link" href="data_jenis_faskes.php">Data Jenis Faskes</a></li>
                     <li><a class="nav-link" href="tabelfaskes.php">Data Faskes</a></li>
-                    </ul>
-                </li>
-            <li class="menu-header">Akses Peta</li> 
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i> <span>Peta Bidan</span></a>
-                    <ul class="dropdown-menu">
-                    <li><a href="persebaran_bidan_24jam.php">Persebaran 24 Jam</a></li>
-                    <li><a href="persebaran_bidan_12jam.php">Persebaran 12 Jam</a></li>
-                    <li><a href="aksesibilitas_bidan_24jam.php">Aksesibilitas 24 Jam</a></li>
-                    <li><a href="aksesibilitas_bidan_12jam.php">Aksesibilitas 12 Jam</a></li>
+                    <li><a class="nav-link" href="input_jarak.php">Input Jarak</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i><span>Peta DSA</span></a>
+                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i> <span>Akses Peta</span></a>
                     <ul class="dropdown-menu">
-                    <li><a href="persebaran_dsa_24jam.php">Persebaran 24 Jam</a></li>
-                    <li><a href="persebaran_dsa_12jam.php">Persebaran 12 Jam</a></li>
-                    <li><a href="aksesibilitas_dsa_24jam.php">Aksesibilitas 24 Jam</a></li>
-                    <li><a href="aksesibilitas_dsa_12jam.php">Aksesibilitas 12 Jam</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i><span>Peta DSPOG</span></a>
-                    <ul class="dropdown-menu">
-                    <li><a href="persebaran_dspog_24jam.php">Persebaran 24 Jam</a></li>
-                    <li><a href="persebaran_dspog_12jam.php">Persebaran 12 Jam</a></li>
-                    <li><a href="aksesibilitas_dspog_24jam.php">Aksesibilitas 24 Jam</a></li>
-                    <li><a href="aksesibilitas_dspog_12jam.php">Aksesibilitas 12 Jam</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i><span>Peta Klinik</span></a>
-                    <ul class="dropdown-menu">
-                    <li><a href="persebaran_klinik_24jam.php">Persebaran 24 Jam</a></li>
-                    <li><a href="persebaran_klinik_12jam.php">Persebaran 12 Jam</a></li>
-                    <li><a href="aksesibilitas_klinik_24jam.php">Aksesibilitas 24 Jam</a></li>
-                    <li><a href="aksesibilitas_klinik_12jam.php">Aksesibilitas 12 Jam</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i><span>Peta Puskesmas</span></a>
-                    <ul class="dropdown-menu">
-                    <li><a href="persebaran_puskesmas_24jam.php">Persebaran 24 Jam</a></li>
-                    <li><a href="persebaran_puskesmas_12jam.php">Persebaran 12 Jam</a></li>
-                    <li><a href="aksesibilitas_puskesmas_24jam.php">Aksesibilitas 24 Jam</a></li>
-                    <li><a href="aksesibilitas_puskesmas_12jam.php">Aksesibilitas 12 Jam</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i><span>Peta Rumah Sakit</span></a>
-                    <ul class="dropdown-menu">
-                    <li><a href="persebaran_rs_24jam.php">Persebaran 24 Jam</a></li>
-                    <li><a href="persebaran_rs_12jam.php">Persebaran 12 Jam</a></li>
-                    <li><a href="aksesibilitas_rs_24jam.php">Aksesibilitas 24 Jam</a></li>
-                    <li><a href="aksesibilitas_rs_12jam.php">Aksesibilitas 12 Jam</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i><span>Peta Seluruhnya</span></a>
-                    <ul class="dropdown-menu">
-                    <li><a href="persebaran_24jam.php">Persebaran 24 Jam</a></li>
-                    <li><a href="persebaran_12jam.php">Persebaran 12 Jam</a></li>
-                    <li><a href="aksesibilitas_24jam.php">Aksesibilitas 24 Jam</a></li>
-                    <li><a href="aksesibilitas_12jam.php">Aksesibilitas 12 Jam</a></li>
+                    <li><a href="persebaran_bidan_24jam.php">Peta Bidan</a></li>
+                    <li><a href="persebaran_dsa_24jam.php">Peta DSA</a></li>
+                    <li><a href="persebaran_dspog_24jam.php">Peta DSPOG</a></li>
+                    <li><a href="persebaran_klinik_24jam.php">Peta Klinik</a></li>
+                    <li><a href="persebaran_puskesmas_24jam.php">Puskesmas</a></li>
+                    <li><a href="persebaran_rs_24jam.php">Rumah Sakit</a></li>
+                    <li><a href="persebaran_24jam.php">Seluruhnya</a></li>
                     </ul>
                 </li>
             </aside>
@@ -168,6 +115,13 @@
                   <div class="card-body">
                     <div class="row">
                         <div class="col-4 col-12 col-md-6 col-lg-4">
+                        <!-- tab menu -->
+                        <div class="btn-group mb-3 btn-group-sm" role="group" aria-label="Basic example">
+                            <a href="persebaran_24jam.php" class="btn btn-primary"></i>Persebaran 24 Jam</a>
+                            <a href="persebaran_12jam.php" class="btn btn-primary"></i>Persebaran Selain 24 Jam</a>
+                            <a href="aksesibilitas_24jam.php" class="btn btn-primary"></i>Aksesibilitas 24 Jam</a>
+                            <a href="aksesibilitas_12jam.php" class="btn btn-primary"></i>Aksesibilitas Selain 24 Jam</a>
+                            </div>
                             <?php
                                 include '../koneksi.php';
                                 ?>

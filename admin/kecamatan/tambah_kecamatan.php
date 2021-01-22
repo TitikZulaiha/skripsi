@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Beranda</title>
+    <title>Tambah Data Kecamatan</title>
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="../../assets/modules/bootstrap/css/bootstrap.min.css">
@@ -182,12 +182,36 @@
                                             <?php
                                             }
                                             ?>
-
-                            
                                             <!--  -->
                                         </select>
                                     </div>
+                            </div>
+                            
+                            <div class="row clearfix">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="card">
+                                <div class="header">
+                                    <h2>
+                                        <center>Pilih Lokasi Anda</center>
+                                        <small><center><span class="text-danger">*Drag marker merah sesuai lokasi anda</span></small>
+                                    </h2>
+                                </div>
+					        <div class="form-group">
+                                <div id="dvMap" style="width: 100%; height: 300px;"></div>
+                            </div>
 
+                            <div class="form-group row mb-4">
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3" >Latitude<small class="text-danger" tyle="font-size:20px">*</small></label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <input id="lat" name="latitude" type="text" class="form-control" required>
+                                    </div>
+                            </div>
+                            <div class="form-group row mb-4">
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3" >Longitude<small class="text-danger" tyle="font-size:20px">*</small></label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <input id="long" name="longitude" type="text" class="form-control" required>
+                                    </div>
+                            </div>
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-center col-12 col-md-3 col-lg-3"></label>
                                     <div class="col-sm-12 col-md-7">
@@ -211,6 +235,57 @@
         </footer>
         </div>
     </div>
+    <!-- script google maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBt6a6dy99jZcyrlIe7OghOsZ0khO1x4O8&libraries=places" async defer> </script>
+    <script type="text/javascript">
+    window.onload = function() {
+
+        var mapOptions = {
+            center: new google.maps.LatLng(-5.3971396, 105.2667887),
+            zoom: 11,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var infoWindow = new google.maps.InfoWindow();
+        var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+
+        var marker = new google.maps.Marker({
+            position: {
+                lat: -5.3971396,
+                lng: 105.2667887
+            },
+            map: map,
+            draggable: true
+        });
+        var searchBox = new google.maps.places.SearchBox(document.getElementById('mapsearch'));
+
+        google.maps.event.addDomListener(searchBox, 'places_changed', function() {
+            var places = searchBox.getPlaces();
+            var bounds = new google.maps.LatLngBounds();
+            var i, place;
+
+            for (i = 0; place = places[i]; i++) {
+                bounds.extend(place.geometry.location);
+                marker.setPosition(place.geometry.location);
+            }
+            map.fitBounds(bounds);
+            map.setZoom(15);
+        })
+
+
+        google.maps.event.addListener(marker, 'drag', function(event) {
+
+            document.getElementById('lat').value = event.latLng.lat();
+            document.getElementById('long').value = event.latLng.lng();
+        });
+
+        google.maps.event.addListener(marker, 'click', function(event) {
+
+            document.getElementById('lat').value = event.latLng.lat();
+            document.getElementById('long').value = event.latLng.lng();
+        });
+    }
+</script>
+
 
     <!-- General JS Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
