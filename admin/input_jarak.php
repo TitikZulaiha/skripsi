@@ -209,9 +209,20 @@
                                                     document.getElementById('end').addEventListener('change', onChangeHandler);
 
 
+
+
                                                     function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-                                                        var start = document.getElementById('start').value;
-                                                        var end = document.getElementById('end').value;
+                                                        var start_id = document.getElementById("start");
+                                                        var start_text = start_id.options[start_id.selectedIndex].text;
+
+                                                        var end_id = document.getElementById("end");
+                                                        var end_text = end_id.options[end_id.selectedIndex].text;
+
+                                                        console.log(start_text);
+                                                        console.log(end_text);
+
+                                                        var start = start_text;
+                                                        var end = end_text;
                                                         // var rata = document.getElementById('rata_rs').value;
                                                         var baru = document.getElementsByTagName('option');
                                                         var selectedMode = document.getElementById('mode').value;
@@ -223,14 +234,15 @@
                                                         }, function(response, status) {
                                                             if (status === 'OK') {
                                                                 directionsDisplay.setDirections(response);
-                                                                console.log('haai');
                                                                 console.log(rata_faskes);
                                                                 console.log(response.routes[0].legs[0].distance.value);
 
                                                                 jarak = response.routes[0].legs[0].distance.value;
                                                                 // rata_rs = (response.options[0].attributes[0].value.nodeValue);
-                                                                document.getElementById('data-kecamatan').value = start;
-                                                                document.getElementById('data-faskes').value = end;
+                                                                document.getElementById('data-kecamatan').value = document.getElementById("start").value;
+                                                                document.getElementById('data-faskes').value = document.getElementById("end").value;
+                                                                document.getElementById('data-kecamatan-text').value = start;
+                                                                document.getElementById('data-faskes-text').value = end;
                                                                 // jarak = jarak/1000
                                                                 document.getElementById('jrk').value = jarak;
                                                                 // document.getElementById('end').getAttribute('rata_rs')+ index;
@@ -250,13 +262,13 @@
 														<div id="floating-panel">
 
 															<strong>ASAL :</strong>
-															<select id="start">
+															<select class="form-control" id="start">
 																<?php
-                                                                    include "koneksi.php";
+                                                                   
                                                                     $sql = mysqli_query($koneksi, "SELECT * FROM kecamatan");
                                                                     while(($data =  mysqli_fetch_assoc($sql))) {
                                                                 ?>
-                                                                    <option value="<?php echo $data['nama_kecamatan']?>">
+                                                                    <option value="<?php echo $data['id_kecamatan']?>">
                                                                         <?php echo $data['nama_kecamatan']; ?>
                                                                     </option>
 																<?php } ?>
@@ -264,13 +276,13 @@
 
 
 															<strong>TUJUAN:</strong>
-															<select id="end" name="end">
+															<select  class="form-control" id="end" name="end">
 																<?php
-                                                                    include "koneksi.php";
+                                                                   
                                                                     $sql = mysqli_query($koneksi, "SELECT * FROM datafaskes");
                                                                     while(($data =  mysqli_fetch_assoc($sql))) {
                                                                 ?>
-                                                                    <option value="<?php echo $data['nama_faskes']; ?>" rata_faskes="<?php echo $data['rata_faskes'] ?>">
+                                                                    <option value="<?php echo $data['id_faskes']; ?>" rata_faskes="<?php echo $data['rata_faskes']; ?>">
                                                                         <?php echo $data['nama_faskes']; ?>
                                                                     </option>
 																<?php } ?>
@@ -318,14 +330,18 @@
 
 															<div class="col-sm-4">
 																<div class="form-group">
-																	<input type="hidden" id="data-kecamatan" name="nama_kecamatan" class="form-control" data-toggle="tooltip" data-placement="bottom"
+																	<input type="hidden" id="data-kecamatan" name="id_kecamatan" class="form-control" data-toggle="tooltip" data-placement="bottom"
+																	 title="Kecamatan" required="required">
+                                                                     <input type="hidden" id="data-kecamatan-text" name="nama_kecamatan" class="form-control" data-toggle="tooltip" data-placement="bottom"
 																	 title="Kecamatan" required="required">
 																</div>
 															</div>
 															<!--  <label class="col-sm-2 control-label">End</label> -->
 															<div class="col-sm-4">
 																<div class="form-group">
-																	<input type="hidden" id="data-faskes" name="nama_faskes" class="form-control" data-toggle="tooltip" data-placement="bottom"
+																	<input type="hidden" id="data-faskes" name="id_faskes" class="form-control" data-toggle="tooltip" data-placement="bottom"
+																	 title="Klinik" required="required">
+                                                                     <input type="hidden" id="data-faskes-text" name="nama_faskes" class="form-control" data-toggle="tooltip" data-placement="bottom"
 																	 title="Klinik" required="required">
 																</div>
 															</div>
