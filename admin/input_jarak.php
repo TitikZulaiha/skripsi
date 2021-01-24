@@ -178,6 +178,7 @@
                                                     include '../koneksi.php';
                                                 ?>
 												<div id="map" style="width: 1000px; height: 550px"></div>
+                                                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
                                                 <script>
                                                     function initMap() {
                                                         var directionsDisplay = new google.maps.DirectionsRenderer;
@@ -208,9 +209,6 @@
                                                     document.getElementById('start').addEventListener('change', onChangeHandler);
                                                     document.getElementById('end').addEventListener('change', onChangeHandler);
 
-
-
-
                                                     function calculateAndDisplayRoute(directionsService, directionsDisplay) {
                                                         var start_id = document.getElementById("start");
                                                         var start_text = start_id.options[start_id.selectedIndex].text;
@@ -218,40 +216,51 @@
                                                         var end_id = document.getElementById("end");
                                                         var end_text = end_id.options[end_id.selectedIndex].text;
 
-                                                        console.log(start_text);
-                                                        console.log(end_text);
+                                                        document.getElementById('data-kecamatan').value = document.getElementById("start").value;
+                                                        document.getElementById('data-faskes').value = document.getElementById("end").value;
+                                                        document.getElementById('data-kecamatan-text').value = start;
+                                                        document.getElementById('data-faskes-text').value = end;
 
-                                                        var start = start_text;
-                                                        var end = end_text;
-                                                        // var rata = document.getElementById('rata_rs').value;
-                                                        var baru = document.getElementsByTagName('option');
-                                                        var selectedMode = document.getElementById('mode').value;
+                                                        $.ajax({
+                                                            type : "GET",
+                                                            url  : 'http://localhost/skripsi/admin/get_alamat.php',
 
-                                                        directionsService.route({
-                                                            origin: start,
-                                                            destination: end,
-                                                            travelMode: google.maps.TravelMode[selectedMode]
-                                                        }, function(response, status) {
-                                                            if (status === 'OK') {
-                                                                directionsDisplay.setDirections(response);
-                                                                console.log(rata_faskes);
-                                                                console.log(response.routes[0].legs[0].distance.value);
+                                                            data: {
+                                                                id_faskes: document.getElementById("end").value,
+                                                            },
+                                                            dataType: "JSON",
+                                                            success : function (data) {
+                                                                var start = start_text;
+                                                                var end =  data.alamat;
 
-                                                                jarak = response.routes[0].legs[0].distance.value;
-                                                                // rata_rs = (response.options[0].attributes[0].value.nodeValue);
-                                                                document.getElementById('data-kecamatan').value = document.getElementById("start").value;
-                                                                document.getElementById('data-faskes').value = document.getElementById("end").value;
-                                                                document.getElementById('data-kecamatan-text').value = start;
-                                                                document.getElementById('data-faskes-text').value = end;
-                                                                // jarak = jarak/1000
-                                                                document.getElementById('jrk').value = jarak;
-                                                                // document.getElementById('end').getAttribute('rata_rs')+ index;
-                                                                document.getElementById('rata_faskes').value = rata_faskes;
+                                                                console.log(end)
+                                                                // var rata = document.getElementById('rata_rs').value;
+                                                                var baru = document.getElementsByTagName('option');
+                                                                var selectedMode = document.getElementById('mode').value;  
 
-                                                            } else {
-                                                                window.alert('Directions request failed due to ' + status);
-                                                            }
-                                                        });
+                                                                directionsService.route({
+                                                                    origin: start,
+                                                                    destination: end,
+                                                                    travelMode: google.maps.TravelMode[selectedMode]
+                                                                }, function(response, status) {
+                                                                    if (status === 'OK') {
+                                                                        directionsDisplay.setDirections(response);
+                                                                        console.log(response.routes[0].legs[0].distance.value);
+
+                                                                        jarak = response.routes[0].legs[0].distance.value;
+                                                                        // rata_rs = (response.options[0].attributes[0].value.nodeValue);
+                                                                        // jarak = jarak/1000
+                                                                        document.getElementById('jrk').value = jarak;
+                                                                        // document.getElementById('end').getAttribute('rata_rs')+ index;
+                                                                        document.getElementById('rata_faskes').value = rata_faskes;
+
+                                                                    } else {
+                                                                        window.alert('Directions request failed due to ' + status);
+                                                                    }
+                                                                });
+                                                            },
+
+                                                        })
                                                     }
                                                     }
                                                 </script>
@@ -342,6 +351,8 @@
 																	<input type="hidden" id="data-faskes" name="id_faskes" class="form-control" data-toggle="tooltip" data-placement="bottom"
 																	 title="Klinik" required="required">
                                                                      <input type="hidden" id="data-faskes-text" name="nama_faskes" class="form-control" data-toggle="tooltip" data-placement="bottom"
+																	 title="Klinik" required="required">
+                                                                     <input type="hidden" id="data-faskes-alamat" name="alamat" class="form-control" data-toggle="tooltip" data-placement="bottom"
 																	 title="Klinik" required="required">
 																</div>
 															</div>
