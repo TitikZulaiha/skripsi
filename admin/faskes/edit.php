@@ -409,15 +409,6 @@
     <script src="../../assets/plugin/js/select2.js"></script>
     <script src="../../assets/plugin/js/select2.min.js"></script>
 
-    <!-- Page Specific JS File -->
-    <script src="../../assets/js/page/index-0.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            $('#data_faskes').DataTable();
-        });
-    </script>
-
     <script>
         $(document).ready(function() {
             $('.kelurahan').select2();
